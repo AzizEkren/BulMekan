@@ -15,9 +15,9 @@ const Home = () => {
   const isLoading = useSelector((state) => state.isLoading);
 
   // Kullanıcı girişine göre arama yapmak için mekanları filtreleme
-  const filteredVenues = venues.filter((venue) =>
-    venue.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredVenues=Array.isArray(venues)?venues.filter((venue) => {
+    return venue.name.toLowerCase().includes(searchVenue.toLowerCase());
+  }):[];
 
   React.useEffect(() => {
     if ("geolocation" in navigator) {
